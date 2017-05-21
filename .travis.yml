@@ -1,0 +1,30 @@
+language: node_js
+node_js:
+- node
+install:
+- sudo pip install awscli
+- npm install
+script: npm run build
+env:
+- CXX=g++-4.8
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+deploy:
+  provider: s3
+  access_key_id: AKIAIEFKCQLMXGA6EUQQ
+  secret_access_key:
+    secure: c/U44LZzCqrncSX1fF0/1k/jc51eLLn5rzSZimQvr2Dh5LXqrLLQNpjvYCod/9pnD9wPQy74zVvcxVInrb9v7frVEktHolQnowR2br6+7waZ6FXNxSBvJJPdBua6jPzis2K8MVQ6BEGG3aSjhmXdWjokH8tbVoUmM/+BM/L7Y0BQ0cK7/A7IRKwTexfNQZ3VfhrMWAZCPz12Rj5njmjaKMiynRqUNDI0tXS1ikZVoZO8M1EEr45cAqiLN+wkOhY/ht/gi8T0PupQdGw3h1jJ9UhxsD1H/Bi0EjMv2a/HcvHdtnLi8LdKCmXuJY2HOqrGwz12TSfcr2Eq86pDnvo5rnlG6qS7C7dscNhZbuV8U3096gtzAcFqjt1y/oimFSVnJB3wpubCNxi0g3keKAnkYOaIre1SOe9QT9UjsIucJzDDvqcCgPzMwGcA6ihUQZQhW0yo/g82MnKN56h4xZUs0MUa0ov+3514GQ5Bid5B87k16v263MyPr3Q+ysutWF7GbH21IFzrJCFO4ijzrxzAuQlHwLwmE52DxEOrcmcMiEyfDNU2F5McWzCf5nMEv7kdCbYAOgiq35g6yIc6tmGKA8GpQGv9i/gTSADkd1TdP63+2Pa9MADhKu1+3uPGiW1NAvQWzdnd1uhrTYKnOFVDBOI2ewn8xeMfco/lZBVeNHA=
+  bucket: thomasgiroir.com
+  local-dir: build
+  skip_cleanup: true
+  cache_control: "max-age=21600"
+  on:
+    branch: master
+    repo: kelsin/tgp
+after_deploy:
+  - aws configure set preview.cloudfront true
+  - aws cloudfront create-invalidation --distribution-id E3AII9CNX1T73P --paths "/*"
