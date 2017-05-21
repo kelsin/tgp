@@ -1,0 +1,25 @@
+{
+  "name": "tgp",
+  "version": "0.0.1",
+  "description": "Thomas Giroir Photography",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf build",
+    "build": "npm run clean && broccoli build build",
+    "serve": "broccoli serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christopher Giroir <kelsin@valefor.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "broccoli": "^1.1.2",
+    "broccoli-asset-rev": "^2.5.0",
+    "broccoli-cli": "^1.0.0",
+    "broccoli-funnel": "^1.2.0",
+    "broccoli-image-resize": "^0.1.1",
+    "broccoli-imagemin": "^1.0.1",
+    "broccoli-merge-trees": "^2.0.0",
+    "broccoli-sass": "^0.7.0",
+    "normalize-scss": "^7.0.0"
+  }
+}
