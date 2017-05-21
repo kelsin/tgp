@@ -30,11 +30,11 @@ var nodes = ['public', topImages, galleryImages, css];
 
 var merged;
 if(process.argv[2] === 'build') {
-  merged = new Merge(nodes);
+  merged = new AssetRev(Merge(nodes));
 } else {
   // Browsersync
   var browserSync = new BrowserSync(nodes, {});
   merged = new Merge(nodes.concat(browserSync));
 }
 
-module.exports = AssetRev(merged);
+module.exports = merged;
