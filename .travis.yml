@@ -3,6 +3,7 @@ node_js:
 - node
 install:
 - sudo pip install awscli
+- npm install
 script: npm run build
 env:
 - CXX=g++-4.8
