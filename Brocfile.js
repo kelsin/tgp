@@ -1,5 +1,6 @@
 var Funnel = require('broccoli-funnel');
 var Merge = require('broccoli-merge-trees');
+var BrowserSync = require('broccoli-browser-sync');
 
 var compileSass = require('broccoli-sass');
 var css = compileSass(['styles', 'node_modules/normalize-scss/sass'], 'index.scss', 'index.css');
@@ -23,4 +24,5 @@ var galleryImages = new Funnel(new ImageResize(['images/gallery'], {
 });
 
 var AssetRev = require('broccoli-asset-rev');
-module.exports = AssetRev(new Merge(['public', topImages, galleryImages, css]));
+var browserSync = new BrowserSync(['public', topImages, galleryImages, css], {});
+module.exports = AssetRev(new Merge(['public', topImages, galleryImages, css, browserSync]));
