@@ -38,8 +38,12 @@ p { line-height: 1.4; }
   background-position: center center;
   height: 100%;
   &--sunflowers { background-image: url('/images/top/sunflowers.jpg'); }
-  &--pavarotti { background-image: url('/images/top/01-Pavarotti.jpg'); }
-  &--baryshnikov { background-image: url('/images/top/01-Baryshnikov.jpg'); }
+  &--lily { background-image: url('/images/top/lily.jpg'); }
+  &--pavarotti1 { background-image: url('/images/top/01-Pavarotti.jpg'); }
+  &--pavarotti2 { background-image: url('/images/top/02-Pavarotti.jpg'); }
+  &--baryshnikov1 { background-image: url('/images/top/01-Baryshnikov.jpg'); }
+  &--baryshnikov2 { background-image: url('/images/top/02-Baryshnikov.jpg'); }
+  &--baryshnikov3 { background-image: url('/images/top/03-Baryshnikov.jpg'); }
 }
 
 .slick-list { height: 100%; }
