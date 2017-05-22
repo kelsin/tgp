@@ -25,8 +25,17 @@ var galleryImages = new Funnel(new ImageResize(['images/gallery'], {
 }), {
   destDir: 'images/gallery'
 });
+var danceImages = new Funnel(new ImageResize(['images/dance'], {
+  sizes: {
+    default: [1920],
+    th: [150, 150]
+  },
+  withoutEnlargement: true
+}), {
+  destDir: 'images/dance'
+});
 
-var nodes = ['public', topImages, galleryImages, css];
+var nodes = ['public', topImages, galleryImages, danceImages, css];
 
 var merged;
 if(process.argv[2] === 'build') {
