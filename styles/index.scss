@@ -5,8 +5,18 @@ $serifFont: 'Playfair Display', Georgia, serif;
 $sansFont: 'Raleway', sans-serif;
 
 body {
-  background-color: #eee;
+  background-color: RGB(2, 14, 25);
   font-family: $sansFont;
+  color: #fff;
+
+  a:link, a:visited {
+    text-decoartion: underline;
+    color: #fff;
+  }
+
+  a:hover {
+    color: RGB(2, 140, 247);
+  }
 }
 
 p { line-height: 1.4; }
@@ -66,9 +76,10 @@ p { line-height: 1.4; }
   height: 80px;
   color: #fff;
   transition: all 0.25s;
+  text-shadow: 2px 2px 4px black;
 
   &--sticky {
-    box-shadow: 0 0 5px rgba(0,0,0,0.6); background-color: #fff; color: #333;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6); background-color: rgba(0,0,0,0.8);
   }
   &__container {
     display: flex;
