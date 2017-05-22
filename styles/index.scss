@@ -77,6 +77,14 @@ p { line-height: 1.4; }
   &__link { text-decoration: none; color: currentColor; }
 }
 
+#contact {
+  text-align: center;
+}
+
+.main-footer {
+  text-align: center;
+}
+
 .main-nav { display: flex; align-items: center; line-height: 1.5; color: currentColor;
   &__list { list-style: none outside; margin: 0; padding: 0; display: flex; height: 100%; }
   &__item {display: flex;  height: 100%; }
