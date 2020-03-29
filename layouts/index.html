@@ -9,7 +9,7 @@
     {{ $normalize := resources.Get "styles/normalize.css" }}
     {{ $indexScss := resources.Get "styles/index.scss" | resources.ExecuteAsTemplate "style.index.scss" . | toCSS | minify | fingerprint }}
     {{ $styles := slice $normalize $indexScss | resources.Concat "styles/bundle.css" }}
-    <link rel="stylesheet" href="{{ $styles.Permalink }}"/>
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}"/>
   </body>
   <head>
     <header class="main-header">
@@ -31,7 +31,7 @@
         {{ $topImages := resources.Match "images/top/*" }}
         {{ range $topImages }}
           {{ $image := .Fit "1920x1080" | fingerprint }}
-          <div class="slide" style="background-image: url('{{ $image.Permalink }}');"></div>
+          <div class="slide" style="background-image: url('{{ $image.RelPermalink }}');"></div>
         {{ end }}
     </section>
     <section id="events" class="page-section">
@@ -56,8 +56,8 @@
             {{ $thumb := .Fill "150x150" | fingerprint }}
             {{ $image := .Resize "1920x" | fingerprint }}
             <li class="gallery__item">
-                <a href="{{ $image.Permalink }}">
-                    <img src="{{ $thumb.Permalink }}" alt="" />
+                <a href="{{ $image.RelPermalink }}">
+                    <img src="{{ $thumb.RelPermalink }}" alt="" />
                 </a>
             </li>
           {{ end }}
@@ -73,8 +73,8 @@
             {{ $thumb := .Fill "150x150" | fingerprint }}
             {{ $image := .Resize "1920x" | fingerprint }}
             <li class="gallery__item">
-                <a href="{{ $image.Permalink }}">
-                    <img src="{{ $thumb.Permalink }}" alt="" />
+                <a href="{{ $image.RelPermalink }}">
+                    <img src="{{ $thumb.RelPermalink }}" alt="" />
                 </a>
             </li>
           {{ end }}
