@@ -1,0 +1,9 @@
+baseURL = "https://thomasgiroir.com/"
+languageCode = "en-us"
+title = "Thomas Giroir Photography"
+outputStyle = "compressed"
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
+[imaging]
+quality = 100
+anchor = "smart"

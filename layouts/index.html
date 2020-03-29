@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{ .Title }}</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/4c790ecf1d.css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Raleway:500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css">
+    {{ $normalize := resources.Get "styles/normalize.css" }}
+    {{ $indexScss := resources.Get "styles/index.scss" | resources.ExecuteAsTemplate "style.index.scss" . | toCSS | minify | fingerprint }}
+    {{ $styles := slice $normalize $indexScss | resources.Concat "styles/bundle.css" }}
+    <link rel="stylesheet" href="{{ $styles.Permalink }}"/>
+  </body>
+  <head>
+    <header class="main-header">
+      <div class="container main-header__container">
+        <a class="main-header__link" href="#"><h1 class="logo">Thomas Giroir Photography</h1></a>
+        <nav class="main-nav">
+          <ul class="main-nav__list">
+            <li class="main-nav__item"><a class="main-nav__link" href="#events"><i class="fa fa-calendar" aria-hidden="true"></i> <span class="main-nav__link-text">Events</span></a></li>
+            <li class="main-nav__item"><a class="main-nav__link" href="#dance"><i class="fa fa-camera-retro" aria-hidden="true"></i> <span class="main-nav__link-text">Dance Portraits</span></a></li>
+            <li class="main-nav__item"><a class="main-nav__link" href="#gallery"><i class="fa fa-picture-o" aria-hidden="true"></i> <span class="main-nav__link-text">Gallery</span></a></li>
+            <li class="main-nav__item"><a class="main-nav__link" href="#about"><i class="fa fa-user" aria-hidden="true"></i> <span class="main-nav__link-text">About</span></a></li>
+            <li class="main-nav__item"><a class="main-nav__link" href="#contact"><i class="fa fa-phone" aria-hidden="true"></i> <span class="main-nav__link-text">Contact</span></a></li>
+            <li class="main-nav__item"><a class="main-nav__link" href="https://www.facebook.com/Thomas-Giroir-Photography-412170141264/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> <span class="main-nav__link-text">Facebook</span></a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section class="top">
+        {{ $topImages := resources.Match "images/top/*" }}
+        {{ range $topImages }}
+          {{ $image := .Fit "1920x1080" | fingerprint }}
+          <div class="slide" style="background-image: url('{{ $image.Permalink }}');"></div>
+        {{ end }}
+    </section>
+    <section id="events" class="page-section">
+      <div class="container">
+        <h1 class="section-header">Events</h1>
+        <div class="container-text">
+          <p>View and purchase photos from your recent cvents!</p>
+          <p><a class="btn btn--solid" href="http://photos.thomasgiroir.com/" target="_blank">View Event Galleries</a></p>
+        </div>
+      </div>
+    </section>
+    <section id="dance" class="page-section">
+      <div class="container">
+        <h1 class="section-header">Dance Portraits</h1>
+        <div class="container-text">
+          <p>Besides photographing rehearsals and performances, I like to photograph dancers in a studio setting. From simple audition photos, in standard poses, to more dramatic movement shots, I can provide an experienced dancer&#39;s eye to give you a portfolio that is beneficial to you whether it is for an audition or for a keepsake. The session itself can be educational to you as a dancer. Besides photographing dancers for over 30 years. I teach ballet at several schools in the Hartford area, including the Greater Hartford Academy for the Arts.</p>
+          <p>Having danced professional for 9 years with the Hartford Ballet and performing many principal roles, my experience helps me to give you images which are technically correct and also artistic and dramatic.</p>
+        </div>
+        <ul class="gallery">
+          {{ $danceImages := resources.Match "images/dance/*" }}
+          {{ range $danceImages }}
+            {{ $thumb := .Fill "150x150" | fingerprint }}
+            {{ $image := .Resize "1920x" | fingerprint }}
+            <li class="gallery__item">
+                <a href="{{ $image.Permalink }}">
+                    <img src="{{ $thumb.Permalink }}" alt="" />
+                </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    </section>
+    <section id="gallery" class="page-section">
+      <div class="container">
+        <h1 class="section-header">Gallery</h1>
+        <ul class="gallery">
+          {{ $galleryImages := resources.Match "images/gallery/*" }}
+          {{ range $galleryImages }}
+            {{ $thumb := .Fill "150x150" | fingerprint }}
+            {{ $image := .Resize "1920x" | fingerprint }}
+            <li class="gallery__item">
+                <a href="{{ $image.Permalink }}">
+                    <img src="{{ $thumb.Permalink }}" alt="" />
+                </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    </section>
+    <section id="about" class="page-section">
+      <div class="container">
+        <h1 class="section-header">About</h1>
+        <div class="container-text">
+          <p>I have worked as a photographer from 1983 until the present. After working at the Hartford Courant as a freelancer in 1983, I worked as an assistant to Jack McConnell, a commercial photographer in Wethersfield, Ct. In 1985, I ventured into the Hartford market as a freelance photographer and have enjoyed servicing clients ever since.</p>
+          <p>I enjoy a mix of clients from both the corporate world and the world of theatre and dance. My clients have included St. Joseph College, Conway Stoughton, Saxe Doernberger & Vita , Eastern Connecticut. Ballet, New Haven Ballet, Ballet Theatre Company, Greater Hartford Academy for the Arts, and Hartt College Dance Department.</p>
+          <p>I service corporate clients here in the New England area, including law firms, educational institutions, as well as non-profits. Whether it is an annual report or an in-house newsletter, I can come to your location and capture the images which say what you want about your business. Being able to travel to your location and still maintain a high level of lighting and composition saves time and money for your employees and your design team.</p>
+          <p>Please contact me about rates, availability, or just to talk about upcoming projects at <a href="mailto:thomas@thomasgiroir.com">thomas@thomasgiroir.com</a> or 860-236-2276.</p>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="page-section">
+      <div class="container">
+        <h1 class="section-header">Contact</h1>
+        <div class="container-text">
+          <p>14 Pine Street<br/>
+            Columbia CT<br/>
+            <i class="fa fa-phone"></i> 860.236.2276<br/>
+            <i class="fa fa-envelope"></i> <a href="mailto:thomas@thomasgiroir.com">thomas@thomasgiroir.com</a><br/>
+            <i class="fa fa-facebook"></i> <a href="https://www.facebook.com/Thomas-Giroir-Photography-412170141264/" target="_blank">Facebook</a></p>
+        </div>
+      </div>
+    </section>
+    <footer class="main-footer">
+      <div class="container">
+        <p>&copy; 2017 Thomas Giroir</p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <script>
+      $('ul.gallery').each(function() {
+        $(this).magnificPopup({
+          delegate: 'a',
+          type: 'image',
+          preload: [1,3],
+          gallery: {
+            enabled: true
+          }
+        });
+      });
+
+      $('.top').slick({
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        fade: true,
+        dots: true,
+        dotsClass: 'top__dots',
+        pauseOnHover: false,
+        pauseOnFocus: false,
+        speed: 1500
+      });
+
+      (function(){
+        $(window).scroll(function(){
+          if($(window).scrollTop() > 0) {
+            $('.main-header').addClass('main-header--sticky');
+          } else {
+            $('.main-header').removeClass('main-header--sticky');
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
