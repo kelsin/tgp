@@ -28,7 +28,7 @@
       </div>
     </header>
     <section class="top">
-        {{ $topImages := resources.Match "images/top/*" }}
+        {{ $topImages := resources.Match "images/top/*.jpg" }}
         {{ range $topImages }}
           {{ $image := .Fit "1920x1080" | fingerprint }}
           <div class="slide" style="background-image: url('{{ $image.RelPermalink }}');"></div>
@@ -51,7 +51,7 @@
           <p>Having danced professional for 9 years with the Hartford Ballet and performing many principal roles, my experience helps me to give you images which are technically correct and also artistic and dramatic.</p>
         </div>
         <ul class="gallery">
-          {{ $danceImages := resources.Match "images/dance/*" }}
+          {{ $danceImages := resources.Match "images/dance/*.jpg" }}
           {{ range $danceImages }}
             {{ $thumb := .Fill "150x150" | fingerprint }}
             {{ $image := .Resize "1920x" | fingerprint }}
@@ -68,7 +68,7 @@
       <div class="container">
         <h1 class="section-header">Gallery</h1>
         <ul class="gallery">
-          {{ $galleryImages := resources.Match "images/gallery/*" }}
+          {{ $galleryImages := resources.Match "images/gallery/*.jpg" }}
           {{ range $galleryImages }}
             {{ $thumb := .Fill "150x150" | fingerprint }}
             {{ $image := .Resize "1920x" | fingerprint }}
