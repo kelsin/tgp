@@ -7,3 +7,25 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 [imaging]
 quality = 100
 anchor = "smart"
+
+[depoyment]
+
+[[deployment.targets]]
+name = "aws"
+URL = "s3://thomasgiroir.com?region=us-east-1"
+cloudFrontDistributionID = "E3AII9CNX1T73P"
+
+[[deployment.matchers]]
+pattern = "^.+\\.(js|css)$"
+cacheControl = "max-age=31536000, no-transform, public"
+gzip = true
+
+[[deployment.matchers]]
+pattern = "^.+\\.(png|jpe?g)$"
+cacheControl = "max-age=31536000, no-transform, public"
+gzip = false
+
+[[deployment.matchers]]
+pattern = "^.+\\.(html|xml|json)$"
+gzip = true
+
