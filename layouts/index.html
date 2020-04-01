@@ -30,7 +30,7 @@
     <section class="top">
         {{ $topImages := resources.Match "images/top/*.jpg" }}
         {{ range $topImages }}
-          {{ $image := .Fit "1920x1080" | fingerprint }}
+          {{ $image := .Fit "1920x1080" }}
           <div class="slide" style="background-image: url('{{ $image.RelPermalink }}');"></div>
         {{ end }}
     </section>
@@ -53,8 +53,8 @@
         <ul class="gallery">
           {{ $danceImages := resources.Match "images/dance/*.jpg" }}
           {{ range $danceImages }}
-            {{ $thumb := .Fill "150x150" | fingerprint }}
-            {{ $image := .Resize "1920x" | fingerprint }}
+            {{ $thumb := .Fill "150x150" }}
+            {{ $image := .Resize "1920x" }}
             <li class="gallery__item">
                 <a href="{{ $image.RelPermalink }}">
                     <img src="{{ $thumb.RelPermalink }}" alt="" />
@@ -70,8 +70,8 @@
         <ul class="gallery">
           {{ $galleryImages := resources.Match "images/gallery/*.jpg" }}
           {{ range $galleryImages }}
-            {{ $thumb := .Fill "150x150" | fingerprint }}
-            {{ $image := .Resize "1920x" | fingerprint }}
+            {{ $thumb := .Fill "150x150" }}
+            {{ $image := .Resize "1920x" }}
             <li class="gallery__item">
                 <a href="{{ $image.RelPermalink }}">
                     <img src="{{ $thumb.RelPermalink }}" alt="" />
