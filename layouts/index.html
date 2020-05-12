@@ -6,16 +6,17 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Raleway:500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {{ $normalize := resources.Get "styles/normalize.css" }}
     {{ $indexScss := resources.Get "styles/index.scss" | resources.ExecuteAsTemplate "style.index.scss" . | toCSS | minify | fingerprint }}
     {{ $styles := slice $normalize $indexScss | resources.Concat "styles/bundle.css" }}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}"/>
-  </body>
   <head>
     <header class="main-header">
       <div class="container main-header__container">
         <a class="main-header__link" href="#"><h1 class="logo">Thomas Giroir Photography</h1></a>
         <nav class="main-nav">
+          <button class="main-nav__button js--toggle-nav">Menu</button>
           <ul class="main-nav__list">
             <li class="main-nav__item"><a class="main-nav__link" href="#events"><i class="fa fa-calendar" aria-hidden="true"></i> <span class="main-nav__link-text">Events</span></a></li>
             <li class="main-nav__item"><a class="main-nav__link" href="#dance"><i class="fa fa-camera-retro" aria-hidden="true"></i> <span class="main-nav__link-text">Dance Portraits</span></a></li>
@@ -38,12 +39,12 @@
       <div class="container">
         <h1 class="section-header">Events</h1>
         <div class="container-text">
-          <p>View and purchase photos from your recent cvents!</p>
+          <p>View and purchase photos from your recent events!</p>
           <p><a class="btn btn--solid" href="http://photos.thomasgiroir.com/" target="_blank">View Event Galleries</a></p>
         </div>
       </div>
     </section>
-    <section id="dance" class="page-section">
+    <section id="dance" class="page-section page-section--alt">
       <div class="container">
         <h1 class="section-header">Dance Portraits</h1>
         <div class="container-text">
@@ -81,7 +82,7 @@
         </ul>
       </div>
     </section>
-    <section id="about" class="page-section">
+    <section id="about" class="page-section page-section--alt">
       <div class="container">
         <h1 class="section-header">About</h1>
         <div class="container-text">
@@ -135,6 +136,17 @@
         pauseOnHover: false,
         pauseOnFocus: false,
         speed: 1500
+      });
+
+      $('.js--toggle-nav').click(function(e) {
+          e.preventDefault();
+          $('body').toggleClass('nav-open');
+          $('.main-nav').toggleClass('main-nav--open');
+      });
+
+      $('.main-nav__link').click(function(e){
+        $('body').removeClass('nav-open');
+        $('.main-nav').removeClass('main-nav--open');
       });
 
       (function(){
