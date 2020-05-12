@@ -57,8 +57,8 @@
             {{ $thumb := .Fill "150x150" }}
             {{ $image := .Resize "1920x" }}
             <li class="gallery__item">
-                <a href="{{ $image.RelPermalink }}">
-                    <img src="{{ $thumb.RelPermalink }}" alt="" />
+                <a class="gallery__link" href="{{ $image.RelPermalink }}">
+                    <img class="gallery__image" src="{{ $thumb.RelPermalink }}" alt="" />
                 </a>
             </li>
           {{ end }}
@@ -74,8 +74,8 @@
             {{ $thumb := .Fill "150x150" }}
             {{ $image := .Resize "1920x" }}
             <li class="gallery__item">
-                <a href="{{ $image.RelPermalink }}">
-                    <img src="{{ $thumb.RelPermalink }}" alt="" />
+                <a class="gallery__link" href="{{ $image.RelPermalink }}">
+                    <img class="gallery__image" src="{{ $thumb.RelPermalink }}" alt="" />
                 </a>
             </li>
           {{ end }}

@@ -282,4 +282,10 @@ a {
   &__item {
     padding: 1em;
   }
+  &__image {
+    max-width: 80px;
+    @media (min-width: 600px) {
+      max-width: 150px;
+    }
+  }
 }
